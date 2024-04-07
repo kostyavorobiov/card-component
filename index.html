@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="./reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./style.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,regular,500,600,700"
+      rel="stylesheet"
+    />
+    <script>
+      function formatInput() {
+        let input = document.getElementById("number");
+        let value = input.value.replace(/\D/g, ""); // Вилучаємо всі символи, крім цифр
+
+        // Додаємо пробіл після кожних чотирьох цифр
+        value = value.replace(/\B(?=(\d{4})+(?!\d))/g, " ");
+
+        input.value = value;
+      }
+    </script>
+    <title>Card Component</title>
+  </head>
+  <body class="flex">
+    <main class="container flex">
+      <div class="background">
+        <img
+          class="cards"
+          src="./images/cards.png"
+          alt=""
+        />
+      </div>
+      <form class="form flex">
+        <div class="input flex">
+          <label for="name">Cardholder Name </label>
+          <input
+            id="name"
+            type="text"
+            placeholder="e.g. Jane Appleseed"
+          />
+        </div>
+        <div class="input flex">
+          <label for="text">Card number </label>
+          <input
+            id="number"
+            type="text"
+            placeholder="e.g. 1234 5678 9123 0000"
+            maxlength="19"
+            oninput="formatInput()"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+          />
+        </div>
+        <div class="date_cvv flex">
+            <div class="date flex">
+                <label for="date flex">Exp. Date (MM/YY) </label>
+                <div class="date__input flex">
+                   <input
+                  id="date"
+                  type="text"
+                  placeholder="MM"
+                  maxlength="2"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+                <input
+                  type="text"
+                  placeholder="YY"
+                  maxlength="2"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                /> 
+                </div>
+            </div>
+            <div class="cvv flex">
+                <label for="">CVC </label>
+                <input
+              id=""
+              type="text"
+              placeholder="e.g. 123"
+              maxlength="2"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            /> 
+            </div>
+        </div>
+        <button>Confirm</button>
+      </form>
+    </main>
+  </body>
+</html>
